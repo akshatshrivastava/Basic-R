@@ -1,5 +1,5 @@
 #reading data from csv file which is present in Github directory -> files used -> dataforhighways.csv
-data<-read.csv("G:/Akshat data/totallengthofnh.csv", header=TRUE)
+data<-read.csv("G:/Akshat data/dataforhighways.csv", header=TRUE)
 head(data)
 
 data=as.data.frame(data)
@@ -135,31 +135,31 @@ colors <- c("Andhra Pradesh" = "#FF00FF",
             "Arunachal Pradesh" = "#000080", 
             "Assam" = "#00FFFF",
             "Bihar"="#00FF00", 
-            "Chhatisgarh"="#FF0000"
+            "Chhatisgarh"="#FF0000",
             
             "Goa" = "#FF00FF",
             "Gujarat" = "#000080",
             "Haryana" = "#00FFFF",
             "Himachal Pradesh" ="#00FF00",
-            "Jammu & Kashmir "="#FF0000"
+            "Jammu & Kashmir "="#FF0000",
             
             "Jharkhand"  = "#FF00FF",
             "Karnataka "= "#000080",
             "Kerala "= "#00FFFF",
             "Madhya Pradesh" ="#00FF00",
-            "Maharashtra" ="#FF0000"
+            "Maharashtra" ="#FF0000",
             
             "Manipur"  = "#FF00FF",
             "Meghalaya" = "#000080",
             "Mizoram "= "#00FFFF",
             "Nagaland" ="#00FF00",
-            "Odisha "="#FF0000"
+            "Odisha "="#FF0000",
             
             "Punjab  "= "#FF00FF",
             "Rajasthan" = "#000080",
             "Sikkim "= "#00FFFF",
             "Tamil Nadu" ="#00FF00",
-            "Telangana "="#FF0000"
+            "Telangana "="#FF0000",
             
             "Tripura  "= "#FF00FF",
             "Uttarakhand" = "#000080",
@@ -170,8 +170,8 @@ colors <- c("Andhra Pradesh" = "#FF00FF",
             "Chandigarh" = "#000080",
             "Dadra & Nagar Haveli" = "#00FFFF",
             "Daman & Diu "="#00FF00",
-            "Delhi "="#FF0000"
-            "Lakshadweep"="#00FFF0"
+            "Delhi "="#FF0000",
+            "Lakshadweep"="#00FFF0",
             "Puducherry"="#00000F"
             
             
