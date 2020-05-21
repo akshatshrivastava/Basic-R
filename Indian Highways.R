@@ -1,4 +1,4 @@
-#reading data from csv file
+#reading data from csv file which is present in same Github directory
 data<-read.csv("G:/Akshat data/totallengthofnh.csv", header=TRUE)
 head(data)
 
