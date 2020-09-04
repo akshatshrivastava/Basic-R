@@ -1,0 +1,36 @@
+---
+title: "Homework Assignment"
+author: "R.Mlearning"
+date: "6/30/2020"
+output: pdf_document
+---
+
+Hi!!! I have done the loop for the mean part, and hope you will do the variance part by yourself
+
+
+
+```{r Code for normal distribution}
+#finding normal and sorting 
+r1<-sort(rnorm(50, sd=3, mean=2))
+print(r1)
+```
+```{r}
+#extracting 10 number from the list
+r1[10]
+```
+
+
+
+Here is the loop for finding mean
+
+```{r Loop for mean}
+means <- c()
+for(i in 1:1000){
+  n <- sort(rnorm(50, sd=3, mean=2))
+  y<-n[10]
+  means[i] <- mean(y)
+  }
+mean(means)
+```
+I am pretty sure, it is correct. However check it one time,
+just to be sure.

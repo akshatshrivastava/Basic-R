@@ -1,0 +1,29 @@
+
+```{r}
+library(caret)
+featurePlot(x = iris[, 1:4], 
+            y = iris$Species, 
+            plot = "pairs",
+            ## Add a key at the top
+            auto.key = list(columns = 3))
+```
+```{r}
+featurePlot(x<-iris[,1:4],
+            y<-iris[,5],
+            plot="boxplot",
+            scales = list(y = list(relation="free"),
+                          x = list(rot = 90)),  
+            layout = c(4,1 ))
+            
+```
+```{r}
+featurePlot(x = iris[, 1:4], 
+            y = iris$Species, 
+            plot = "density",
+            scales=list(x=list(relation="free"), 
+                        y=list(relation="free")), 
+            auto.key=list(columns=1)
+)
+            
+```
+

@@ -1,0 +1,14 @@
+
+```{r}
+t.test(iris$Sepal.Length, iris$Sepal.Width)
+```
+```{r}
+t.test(iris$Petal.Length)
+```
+```{r}
+t.test(extra ~ group, data = sleep)
+```
+```{r}
+plot(extra ~ group, data = sleep)
+```
+

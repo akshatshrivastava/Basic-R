@@ -1,0 +1,27 @@
+
+```{r}
+x <- seq(0, 100, by = 1) 
+y <- dunif(x, min = 10, max = 30)
+plot(y)
+```
+```{r}
+x1 <- seq(0, 100, by = 1) 
+y1 <- punif(x1, min = 10, max = 30)
+plot(y1)
+```
+
+```{r}
+x2 <- seq(0, 1, by = 0.01) 
+y2 <- qunif(x2, min = 10, max = 100)
+plot(y2, type="o")
+```
+
+```{r}
+y3 <- runif(1000000,min = 10, max=50)                        # Draw N exp distributed values
+y3     
+
+ # Plot of randomly drawn exp density
+hist(y3, breaks = 50, main = "Uniform Distribution")             
+
+```
+

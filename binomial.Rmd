@@ -1,0 +1,33 @@
+
+```{r}
+x <- seq(0,50,by = 1)
+y <- dbinom(x,50,0.5)
+plot(x,y)
+```
+```{r}
+x <- pbinom(4,10,0.5)
+print(x)
+```
+```{r}
+y<-qbinom(0.376,10,0.5)
+print(y)
+```
+```{r}
+random.binomial <- c()
+for(i in 1:10000) {
+# generate 7 samples from the Uniform(0,1) distribution. Call it random.uniform
+random.uniform <- runif(7, 0, 1)
+# using random.uniform, generate a bernoulli(0.3) distributed random variables
+random.bernoulli <- as.numeric(random.uniform < 0.3)
+# add them up to get a binomial random variable (numebr of successes in 7 trials)
+# assign the value to the ith element of the vector random.binomial
+random.binomial[i] <- sum(random.bernoulli)
+}
+
+hist(random.binomial,
+nclass = 8,
+main="Histogram of simulated Bin(0.3,7)",
+xlab = "simulated value",
+right=FALSE)
+```
+

@@ -1,0 +1,14 @@
+
+
+```{r}
+library(plotly)
+
+# Data: volcano is provided by plotly
+
+# Plot
+p <- plot_ly(z = volcano, type = "surface")
+p
+
+library(htmlwidgets)
+saveWidget(p, file=paste0("D:/Rmlearning/Final_plots/HtmlWidget3dSurface.html"))
+```

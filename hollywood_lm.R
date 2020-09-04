@@ -28,6 +28,7 @@ reprod<-lm(receipt_first~production_cost, data=data)
 summary(reprod)
 
 #Line of least squares
+
 plot(data$production_cost,data$receipt_first, 
      col = "black", pch = 21, 
      bg = "grey", cex = 2,
@@ -39,16 +40,17 @@ axis(1)
 axis(2)
 
 #introducing line for best fit
-abline(reprod, col="red")
+abline(reprod)
 
-#x1 and x2 define darkening limits of line
-ablineclip(reprod, lwd = 2,x1 = 1, x2 = 17) 
+#x1 and x2 define darkening limits of line and lwd is line width
+ablineclip(reprod, lwd = 2,col="red",x1 = 0, x2 = 17) 
 
 #for staightening y label along y axis
-par(las = 0)
+#par(las = 0)
 
 
 mtext("Production Cost", side = 1, line = 2.5, cex = 1.2)
 mtext("Receipts", side = 2, line = 2, cex = 1.2)
 text(4.5, 120, "slope =7.8 ", cex = 0.75)
+
 

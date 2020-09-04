@@ -1,0 +1,28 @@
+
+
+```{r}
+x <- seq(0, 1, by = 0.02) 
+y <- dexp(x, rate = 5)
+plot(y)
+```
+```{r}
+x1 <- seq(0, 1, by = 0.02) 
+y1 <- pexp(x1, rate = 5)
+plot(y1)
+```
+
+```{r}
+x2 <- seq(0, 1, by = 0.02) 
+y2 <- qexp(x2, rate = 5)
+plot(y2)
+```
+
+```{r}
+y3 <- rexp(1000, rate = 10)                        # Draw N exp distributed values
+y3     
+
+ # Plot of randomly drawn exp density
+hist(y3, breaks = 100, main = "Exp Distribution")             
+
+```
+

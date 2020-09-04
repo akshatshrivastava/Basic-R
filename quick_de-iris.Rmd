@@ -1,0 +1,108 @@
+---
+title: "QUICK DATA EXPLORATION BY R.MLEARNING"
+output:
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. 
+Here I have done a Quick Data Exploration of IRIS Dataset in R. Iris is a popular dataset, and fairly easy to operate upon and hence is best choice for a beginner project
+
+1. First I will attach all the necessary packages into the current R Script.
+
+```{r}
+library(ggplot2)
+library(corrplot)
+library(dplyr)
+library(caret)
+library(ellipse)
+```
+2. After this, I will call IRIS dataset into current library using the function *data( )*, and *head()* is used to see first few rows of dataset
+
+```{r}
+data(iris)
+head(iris)
+```
+
+Lets find out dimensions of iris dataset, and each species associated with the dataset.
+
+```{r}
+dim(iris)
+table(iris$Species)
+```
+
+3. IRIS Dataset is clean, that is it has no missing values, outlier or NA values. Tougher datasets will be covered in next projects.
+
+We'll first plot a scatterplot matrix
+
+```{r}
+plot(iris)
+```
+
+*featurePlot()* is a part of caret package.
+
+```{r}
+x <- iris[,1:4]
+y <- iris[,5]
+featurePlot(x=x, y=y ,plot="ellipse")
+```
+
+Scatterplot matrix, draws plots for all the variables in the dataset. But you can't get any clear idea, so I will do some more DATA VISUALISATION.
+
+4. BOXPLOTS - They can be plotted using Boxplot command. A for loop is used to repeat the *boxplot ()* command over all the SPECIES, and *par( )* is used to create boxplots for multiple graphs in a single window.
+
+```{r}
+
+par(mfrow=c(1,4))
+  for(i in 1:4) {
+  boxplot(x[,i], main=names(iris)[i])
+  }
+```
+5. DENSITY PLOTS - They can be plotted using *density* command. A for loop is used to repeat the *density* command over all the SPECIES, and *par()* is used to create boxplots for multiple graphs in a single window.
+
+```{r}
+par(mfrow=c(1,4))
+for(i in 1:4) {
+plot(density(iris[,i]), main=names(iris)[i])
+}
+```
+6. HISTOGRAM - They can be plotted using *hist* command. A for loop is used to repeat the *hist* command over all the SPECIES, and *par()* is used to create boxplots for multiple graphs in a single window.
+
+```{r}
+par(mfrow=c(1,4))
+for(i in 1:4) {
+hist(iris[,i], main=names(iris)[i])
+}
+```
+7. GGPLOT - is a standard library for data visualisation. LEts look at how data varies between Petal Length and Sepal Length
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, colour = Species)) + 
+  geom_point() +
+  ggtitle('Iris Species by Petal Length and Sepal Length')
+```
+8. Again use GGPLOT, a standard library for data visualisation. Lets look at how data varies between Petal Width and Sepal Width
+
+```{r}
+ggplot(iris, aes(x = Sepal.Width, y = Petal.Width, colour = Species)) + 
+  geom_point() +
+  ggtitle('Iris Species by Petal Length and Sepal Width')
+```
+9. LINEAR REG - lets perform linear regression.
+
+```{r}
+#linear reg
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species)) + 
+  geom_point()+geom_smooth(method = "lm")
+```
+```{r}
+#linear reg
+ggplot(iris, aes(x=Sepal.Width, y=Petal.Width,  color=Species)) + 
+  geom_point()+geom_smooth(method = "lm")
+```
+
+AND THAT WOULD BE IT!! This is just a beginner project, so only basic is covered, which is already presented on my 
+
+INSTAGRAM PAGE - [R.MLEARNING][instagram.com/r.mlearning]
+
+For more project stay tuned....

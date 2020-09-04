@@ -1,0 +1,243 @@
+---
+title: 'R Notebook on ggplot2 by Admin R.MLEARNING '
+output:
+  html_document:
+    df_print: paged
+---
+
+This is a R markdown file, made by R.mlearning instagram admin
+For more info goto - instagram.com/r.mlearning
+
+
+```{r}
+library(ggplot2)
+data(iris)
+```
+```{r}
+ggplot(iris)
+```
+```{r}
+head(iris, n=3)
+```
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species))
+```
+
+
+
+```{r}
+k<-ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species)) + 
+  geom_point() 
+plot(k)
+```
+
+
+
+```{r}
+#annotate is used to write on graph
+k+annotate("text", x=4, y=6, label="text")+
+  annotate("text", x=4:6, y=5:7, label="text2")+
+  annotate("rect", xmin = 5, xmax = 7, ymin = 4, ymax = 6, alpha=0.5)+
+  annotate("segment", x = 5, xend = 7, y = 4, yend = 6, col="red")
+```
+
+
+```{r}
+#removing legends
+k+theme(legend.position = "none")
+```
+
+
+
+```{r}
+k+theme(legend.position = "top")
+```
+
+
+
+```{r}
+#legend title and legend text
+k+theme(legend.title = element_text(colour = "blue", 
+                                    size = 10,
+                                    face = "bold"))+
+  theme(legend.text = element_text(colour = "red", 
+                                    size = 6,
+                                    face = "bold"))
+        
+  
+```
+
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species)) + 
+  geom_point()+geom_smooth()
+```
+
+
+
+```{r}
+#linear reg
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species)) + 
+  geom_point()+geom_smooth(method = "lm")
+```
+
+
+
+```{r}
+#linear reg w/o shade
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length, color=Species)) + 
+  geom_point()+geom_smooth(method = "lm", se = F)
+```
+
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) + 
+  geom_point(aes(color=Species)) + 
+  geom_smooth()
+```
+
+
+```{r}
+gg<-ggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) + 
+  geom_point(aes(color=Species)) + 
+  geom_smooth()+
+  labs(title="Scatterplot", x="Sepal Length", y="Petal Length")
+plot(gg)
+```
+
+
+```{r}
+gg1 <- gg + theme(plot.title=element_text(size=20, face="bold"), 
+                  axis.text.x=element_text(size=12), 
+                  axis.text.y=element_text(size=12),
+                  axis.title.x=element_text(size=15),
+                  axis.title.y=element_text(size=15)) + 
+  scale_color_discrete(name="Species") #legend title
+plot(gg1)
+```
+
+
+
+```{r}
+#separating the graph by species 
+gg1 + facet_wrap( ~ Species)
+```
+
+
+
+```{r}
+#scales to one level
+gg1 + facet_wrap(~ Species, scales="free")
+```
+
+
+
+```{r}
+library(ggfortify)
+head(AirPassengers, n=3)
+autoplot(AirPassengers) + labs(title="AirPassengers")
+```
+
+
+
+
+```{r}
+plot1 <- ggplot(mtcars, aes(x=cyl)) + # Y axis derived from counts of X item
+  geom_bar() + 
+  labs(title="Frequency bar chart")  
+print(plot1)
+```
+
+
+
+
+```{r}
+#If you would like the make a bar chart of the absolute number, 
+#given by Y aesthetic, you need to set stat="identity" 
+#inside the geom_bar.
+df <- data.frame(var=c("a", "b", "c"), nums=c(1:3))
+plot2 <- ggplot(df, aes(x=var, y=nums)) + 
+  geom_bar(stat = "identity")  # Y axis is explicit. 'stat=identity'
+print(plot2)
+```
+
+
+
+
+```{r}
+#The gridExtra package provides the facility to arrage 
+#multiple ggplots in a single grid.
+library(gridExtra)
+grid.arrange(plot1, plot2, ncol=2)
+```
+
+
+
+
+```{r}
+#Flipping the bar chart
+df <- data.frame(var=c("a", "b", "c"), nums=c(1:3))
+ggplot(df, aes(x=var, y=nums)) + 
+  geom_bar(stat = "identity") + 
+  coord_flip() + 
+  labs(title="Coordinates are flipped")
+```
+
+
+Change themes
+Apart from the basic ggplot2 theme, you can change the look and feel of your plots using one of these builtin themes.
+
+theme_gray()
+theme_bw()
+theme_linedraw()
+theme_light()
+theme_minimal()
+theme_classic()
+theme_void()
+
+
+
+```{r}
+gg1+theme_bw()
+```
+```{r}
+ggplot(mtcars, aes(x=cyl)) + geom_bar(fill="firebrick") + theme(plot.background=element_rect(fill="steelblue"), 
+  plot.margin = unit(c(2, 4, 1, 3), "cm")) 
+# top, right, bottom, left
+```
+
+
+
+```{r}
+#saving a plot
+ggsave("myggplot.png")  # saves the last plot.
+ggsave("myggplot.png", plot=plot1)  # save a stored ggplot
+```
+
+```{r}
+head(mpg, n=3)
+```
+
+
+```{r}
+#simple histogram
+data("mpg")
+ggplot(mpg, aes(x=factor(cyl)))+
+            geom_bar()
+```
+
+
+
+```{r}
+#coloring the histogram
+ggplot(mpg, aes(x=factor(cyl)))+
+            geom_bar(col ="red",
+                     fill="green",
+                     alpha = 0.5,
+                    )
+```
+
+
+
+

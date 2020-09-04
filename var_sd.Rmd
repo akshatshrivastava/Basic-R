@@ -1,0 +1,24 @@
+
+```{r}
+vec <- c(15, 20, 25, 30, 35)
+var(vec)
+```
+
+```{r}
+length(vec)
+```
+
+
+
+```{r}
+var(vec)*(length(vec)-1)/length(vec)
+```
+
+```{r}
+sd(vec)
+```
+
+```{r}
+sd(vec)*(sqrt((length(vec)-1)/length(vec)))
+```
+

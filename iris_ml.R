@@ -2,24 +2,25 @@
 
 
 #install packages to be used later
+#if packages are not installed remove # from install.packages
 
 #install.packages("caret")
-library(caret)
+library(caret) #for easily computing cross validation methods
 
 #install.packages("ellipse")
-library(ellipse)
+library(ellipse) #for using ellipse function
 
 #install.packages("e1071")
-library(e1071)
+library(e1071) #implementation of SVM in R
 
 #install.packages("kernlab")
-library(kernlab)
+library(kernlab)#implementation of KNN 
 
 #install.packages("dplyr")
-library(dplyr)
+library(dplyr)#data manipulation
 
 #install.packages("randomForest")
-library(randomForest)
+library(randomForest)#implementation of random forest
 
 
 #Reading the dataset from files_used->iris.csv
@@ -49,11 +50,8 @@ validation <- dataset[-validation_index,]
 # use the remaining 80% of data to training and testing the models
 dataset <- dataset[validation_index,]
 
+#dimension of new dataset after removing validation
 dim(dataset)
-
-# summarize the class distribution
-#percentage <- prop.table(table(dataset$Species)) * 100
-#cbind(freq=table(dataset$Species), percentage=percentage
 
 #distribution of different species in absolute numbers
 table(dataset$Species)
@@ -82,7 +80,7 @@ par(mfrow=c(1,4))
   }
 
 # scatterplot matrix
-featurePlot(x=x, y=y ,plot="ellipse")
+featurePlot(x=x, y=y ,plot="ellipse") #caret package
 featurePlot(x=x, y=y ,plot="box") 
 
 # density plots for each attribute by class value
@@ -90,7 +88,7 @@ scales <- list(x=list(relation="free"), y=list(relation="free"))
 featurePlot(x=x, y=y, plot="density", scales=scales)
 
 # Run algorithms using 10-fold cross validation
-trainControl <- trainControl(method="cv", number=10)
+trainControl <- trainControl(method="cv", number=10)#caret package
 metric <- "Accuracy"
 
 # evaluate 5 different algorithms:
@@ -126,7 +124,8 @@ fit.rf <- train(Species~., data=dataset, method="rf", metric=metric,
 trControl=trainControl)
 
 # summarize accuracy of models
-results <- resamples(list(lda=fit.lda, cart=fit.cart, knn=fit.knn, svm=fit.svm, rf=fit.rf))
+results <- resamples(list(lda=fit.lda, cart=fit.cart, knn=fit.knn, 
+                          svm=fit.svm, rf=fit.rf))
 summary(results)
 
 # compare accuracy of models

@@ -1,0 +1,35 @@
+
+```{r}
+# Create a sequence of numbers between -10 and 10 incrementing 
+#by 0.1.
+x <- seq(0, 10, by = .1)
+
+# Choose the mean as 2.5 and standard deviation as 0.5.
+y <- dnorm(x, mean = 4, sd = 0.5)
+
+plot(x,y)
+
+```
+
+```{r}
+rnorm(5)
+```
+
+
+```{r}
+rnorm(5, sd=1, mean=0)
+```
+
+```{r}
+# To be clear about the arguments in this example:
+# q = 0, mean = 0, sd = 1
+pnorm(0) 
+```
+
+```{r}
+pnorm(2, mean=1, sd=0.7)
+```
+```{r}
+qnorm(0.9234363, mean=1, sd=0.7)
+```
+

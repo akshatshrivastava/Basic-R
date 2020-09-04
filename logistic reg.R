@@ -142,10 +142,11 @@ predicted.data$rank <- 1:nrow(predicted.data)
 ## heart disease and color by whether or not they actually had heart disease
 ggplot(data=predicted.data, aes(x=rank, y=probability.of.hd)) +
   geom_point(aes(color=hd), alpha=1, shape=4, stroke=2) +
+  geom_smooth(method="auto")+
   xlab("Index") +
   ylab("Predicted probability of getting heart disease")
 
-ggsave("heart_disease_probabilities.pdf")
+
 
 
 
